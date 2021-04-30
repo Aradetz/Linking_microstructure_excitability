@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# This scripts creates subject IDs that are loaded by the main scripts 
+# 
+# Radetz et al. (2021): Linking microstructural integrity and motor 
+# cortex excitability in multiple sclerosis
+#
+# Angela Radetz, 03/2020
+
+
+
+
+# create subject IDs for healthy controls
+l=1;
+for (( k=1; k<=49; k++ )); do
+  group1[$l]=HC;
+  subjects1[$l]=$(printf "%03d" ${k});
+  let l=l+1;
+done
+
+# create subject IDs for MS patients
+l=1;
+for (( k=1; k<=50; k++ )); do
+  group1[$l]=MS;
+  subjects1[$l]=$(printf "%03d" ${k});
+  let l=l+1;
+done
+
+# hand over only those subject numbers that will be processed in the main script depending on node reservation
+l=1;
+for (( k=1; k<=99; k++ )); do
+  group[$l]=${group1[$k]};
+  subjects[$l]=${subjects1[$k]};
+  let l=l+1;
+done
+
+
+
+
+
+
+
+
